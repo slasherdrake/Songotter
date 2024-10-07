@@ -72,8 +72,32 @@ export default function CreatePost({accessToken}:any) {
         });
         
       } catch (error) {
+        
         console.error('Error searching Spotify:', error);
-        window.location.href = '/';
+        if (axios.isAxiosError(error)) {
+          if (error.response) {
+            // The request was made and the server responded with a status code
+            // that falls out of the range of 2xx
+            console.error('Response data:', error.response.data);
+            console.error('Response status:', error.response.status);
+            console.error('Response headers:', error.response.headers);
+            
+            if (error.response.status === 401) {
+              console.error('Unauthorized: Access token might be invalid or expired');
+              // Handle token refresh or re-authentication here
+            } else if (error.response.status === 429) {
+              console.error('Rate limit exceeded');
+              // Implement exponential backoff or inform user to try again later
+            }
+          } else if (error.request) {
+            // The request was made but no response was received
+            console.error('No response received:', error.request);
+          } else {
+            // Something happened in setting up the request that triggered an Error
+            console.error('Error setting up the request:', error.message);
+          }
+        }
+        //window.location.href = '/';
       }
     };
     const delayDebounceFn = setTimeout(() => {

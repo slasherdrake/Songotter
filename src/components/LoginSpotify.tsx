@@ -26,6 +26,7 @@ export default function LoginSpotify() {
         }
       } catch (error) {
         console.error('Error fetching Spotify auth URL:', error);
+        
       }
     };
 
