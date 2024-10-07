@@ -17,17 +17,12 @@ function AppContent() {
   const code = new URLSearchParams(window.location.search).get('code');
   
   if (code) {
-    // Handle Spotify authentication
     spotifyInitConnect(code);
   }
  
 
   return (
-        <div className="background">
-      {/* Global header */}
-      
-
-      {/* Main content area with routes */}
+    <div className="background">
       <main>
         <Routes>
         <Route path="/" element={<ProtectedRoute requireAuth={false} requireSpotify={false}><Home /></ProtectedRoute>} />
@@ -36,10 +31,9 @@ function AppContent() {
           <Route path="/login-spotify" element={  <ProtectedRoute requireAuth={true} requireSpotify = {false}><LoginSpotify/></ProtectedRoute>} />
           <Route path="/dashboard" element={<ProtectedRoute requireAuth={true} requireSpotify = {true}> <Dashboard /></ProtectedRoute>} />
           
-          {/* Add more routes as needed */}
+          
         </Routes>
       </main>
-      {/* Global footer */}
     </div>
   );
 }

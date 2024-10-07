@@ -245,32 +245,24 @@
 /* spotify search */
  .search-spotify-button{
     height: 50px;
-    
+    width:100%;
+    border-bottom: 1px solid white;
  }
  .search-spotify-button .button-all{
     display:flex;
-    width: 600px;
     height: 50px;
-    justify-content: space-between;
+    
  }
 
  .search-spotify-button .item-info {
     display: flex;
-    flex-direction: column;
-    width:550px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    flex-direction: row;
+    align-items: center;
+    width:100%;
+    margin-left: 5px;
+    gap:5px;
   }
-  .search-spotify-button .item-info .item-name {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    display: inline-block;
-    /* transition: transform 3.0s ease; */
-  }
-  /* .search-spotify-button:hover .item-info .item-name{
-    /* transform: translateX(-100%); */
+  
  
   .create-post-first{
     display:flex;
@@ -285,6 +277,43 @@
     background-color: rgb(207, 55, 151);
     color: white;
   }
+  .create-post__top{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.spotify-search{
+    height: 55px;
+    outline: none;
+    border:none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    border: 1px solid;
+}
+.search-in-flex{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    
+}
+
+.active,.inactive{
+    padding: 8px;
+    border: 1px solid white;
+}
+.inactive:hover{
+    background-color: white;
+    color: rgb(207, 55, 151);
+}
+.height-50px{
+    height: 52px;
+}
+.border{
+    border: 1px solid white;
+    
+}
 
   .hidden{
     display: none;
@@ -437,18 +466,4 @@
 
 .dash-underline{
     text-decoration: underline;
-}
-
-.create-post__top{
-    display: flex;
-    flex-direction: column;
-    justify-content: stretch;
-}
-
-.spotify-search{
-    height: 55px;
-    width: 600px;
-}
-.search-in-flex{
-    align-items: stretch;
 }

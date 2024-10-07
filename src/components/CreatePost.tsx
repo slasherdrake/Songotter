@@ -94,6 +94,7 @@ export default function CreatePost({accessToken}:any) {
         link: link,
     });
     setFirstVisible(false);
+    setMessageVisible(false);
     console.log('Selected item ID:', id);
     };
   const backToFirst = () => {
@@ -167,7 +168,7 @@ export default function CreatePost({accessToken}:any) {
   const resultForType = getResultsForType();
     return (
         <div className='create-post-container'>
-        <Message colorTheme='success'className={messageVisible ? 'message' : 'hidden'}>Post Creation Success</Message>
+        <Message colorTheme='success'className={messageVisible ? 'message global-space' : 'hidden'}>Post Creation Success</Message>
         <div className={firstVisible ? 'create-post-first' : 'hidden'}>
             <div className='create-post__top global-extra-space'>
                 
@@ -189,9 +190,9 @@ export default function CreatePost({accessToken}:any) {
               
               <div>
                 {resultForType.length > 0 && (
-                  <ul className='nav-list'>
+                  <ul className='nav-list nav-list-create-post border'>
                     {resultForType.map((item: any) => (
-                      <li key={item.id} >
+                      <li className='height-50px' key={item.id} >
                         <button className="search-spotify-button" onClick={() => handleClick(
                             item.id,
                              (item.images && item.images.length > 0 ? item.images[0].url : item.album.images[0].url),

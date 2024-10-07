@@ -3,7 +3,7 @@ import { useSpotify } from '../context/SpotifyContext';
 import { useNavigate } from 'react-router-dom';
 import { PropsWithChildren, useEffect, useState } from 'react';
 import {Loader} from '@aws-amplify/ui-react'
-
+import  spotifyInitConnect  from '../hooks/SpotifyInitConnect';
 interface ProtectedRouteProps {
   requireAuth: boolean;
   requireSpotify: boolean;
@@ -14,8 +14,13 @@ export default function ProtectedRoute({
   requireAuth,
   requireSpotify,
 }: PropsWithChildren<ProtectedRouteProps>) {
+  const code = new URLSearchParams(window.location.search).get('code');
+
   const { isAuthenticated, isAuthLoading: authLoading } = useAuth();
   const { hasToken, isLoading: spotifyLoading } = useSpotify();
+  if (code) {
+    spotifyInitConnect(code);
+  }
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   
