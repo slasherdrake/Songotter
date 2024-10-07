@@ -1,55 +1,59 @@
-import { useEffect, useState } from "react";
-import type { Schema } from "../amplify/data/resource";
-import { generateClient } from "aws-amplify/data";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import { Authenticator } from '@aws-amplify/ui-react'
-import '@aws-amplify/ui-react/styles.css'
-const client = generateClient<Schema>();
+import Home from './pages/Home.tsx';
+import CreateAccount from './pages/CreateAccount.tsx';
+import LoginSpotify from './components/LoginSpotify.tsx';
+import Dashboard from './pages/Dashboard.tsx';
+import SignIn from './pages/SignIn.tsx';
+import './styles/global.css';
+import spotifyInitConnect from './hooks/SpotifyInitConnect.tsx';
+import { AuthProvider } from './context/AuthContext';
+import {SpotifyProvider} from './context/SpotifyContext'
+import ProtectedRoute from './components/ProtectedRoute.tsx';
+
+
+
+function AppContent() {
+  const code = new URLSearchParams(window.location.search).get('code');
+  
+  if (code) {
+    // Handle Spotify authentication
+    spotifyInitConnect(code);
+  }
+ 
+
+  return (
+        <div className="background">
+      {/* Global header */}
+      
+
+      {/* Main content area with routes */}
+      <main>
+        <Routes>
+        <Route path="/" element={<ProtectedRoute requireAuth={false} requireSpotify={false}><Home /></ProtectedRoute>} />
+          <Route path="/sign-in" element={<ProtectedRoute requireAuth={false} requireSpotify={false}><SignIn /></ProtectedRoute>} />
+          <Route path="/create-account" element={<ProtectedRoute requireAuth={false} requireSpotify={false}><CreateAccount /></ProtectedRoute>} />
+          <Route path="/login-spotify" element={  <ProtectedRoute requireAuth={true} requireSpotify = {false}><LoginSpotify/></ProtectedRoute>} />
+          <Route path="/dashboard" element={<ProtectedRoute requireAuth={true} requireSpotify = {true}> <Dashboard /></ProtectedRoute>} />
+          
+          {/* Add more routes as needed */}
+        </Routes>
+      </main>
+      {/* Global footer */}
+    </div>
+  );
+}
+
 
 function App() {
-  const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
-
-  useEffect(() => {
-    client.models.Todo.observeQuery().subscribe({
-      next: (data: { items: any; }) => setTodos([...data.items]),
-    });
-  }, []);
-
-  function createTodo() {
-    client.models.Todo.create({ content: window.prompt("Todo content") });
-  }
-    
-  function deleteTodo(id: string) {
-    client.models.Todo.delete({ id })
-  }
   return (
-        
-    <Authenticator>
-      {({ signOut, user }) => (
-    <main>
-          <h1>{user?.signInDetails?.loginId}'s todos</h1>
-          <button onClick={createTodo}>+ new</button>
-      <ul>
-        {todos.map((todo) => (
-          <li 
-          onClick={() => deleteTodo(todo.id)}
-          key={todo.id}
-          >
-            {todo.content}</li>
-        ))}
-      </ul>
-      <div>
-        🥳 App successfully hosted. Try creating a new todo.
-        <br />
-        <a href="https://docs.amplify.aws/react/start/quickstart/#make-frontend-updates">
-          Review next step of this tutorial.
-        </a>
-      </div>
-      <button onClick={signOut}>Sign out</button>
-    </main>
-        
-      )}
-      </Authenticator>
+    <AuthProvider>
+      <SpotifyProvider>
+      <Router>
+        <AppContent />
+      </Router>
+      </SpotifyProvider>
+    </AuthProvider>
   );
 }
 
