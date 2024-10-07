@@ -169,23 +169,24 @@ export default function CreatePost({accessToken}:any) {
         <div className='create-post-container'>
         <Message colorTheme='success'className={messageVisible ? 'message' : 'hidden'}>Post Creation Success</Message>
         <div className={firstVisible ? 'create-post-first' : 'hidden'}>
-            <div className='create-post__top'>
-                <h3>Create a post</h3>
+            <div className='create-post__top global-extra-space'>
+                
                 <div className='create-post__top__types'>
-                    <button className={type === 'track' ? 'active' : 'inactive'} onClick={() => setType('track')}>Track</button>
-                    <button className={type === 'album' ? 'active' : 'inactive'} onClick={() => setType('album')}>Album</button>
-                    <button className={type === 'artist' ? 'active' : 'inactive'} onClick={() => setType('artist')}>Artist</button>
+                    <button className={type === 'track' ? 'active create-type' : 'inactive create-type'} onClick={() => setType('track')}>Track</button>
+                    <button className={type === 'album' ? 'active create-type' : 'inactive create-type'} onClick={() => setType('album')}>Album</button>
+                    <button className={type === 'artist' ? 'active create-type' : 'inactive create-type'} onClick={() => setType('artist')}>Artist</button>
                 </div>
             
             
-                <div>
+              <div className= 'search-in-flex'>
               <input
                 type="text"
                 value={query}
                 onChange={handleSearchChange}
                 placeholder={"Search Spotify for " + type + "s"}
-                style={{ padding: '10px', width: '300px' }}
+                className = 'spotify-search'
               />
+              
               <div>
                 {resultForType.length > 0 && (
                   <ul className='nav-list'>
@@ -246,7 +247,7 @@ export default function CreatePost({accessToken}:any) {
                             
                                 </Flex>
                                 <button onClick={handleLink} className='play-on-spotify'>
-                                    <img  src= '../public/spotify-logo.svg' width='25px' className='spotify-logo-down'/>
+                                    <img  src= '../spotify-logo.svg' width='25px' className='spotify-logo-down'/>
                                     Play on Spotify
                                 </button>
                             </Flex>

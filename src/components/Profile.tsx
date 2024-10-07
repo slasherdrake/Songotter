@@ -47,7 +47,7 @@ export default function Profile() {
                             
                                 </Flex>
                                 <button onClick={() => window.open(post.link, '_blank')} className='play-on-spotify'>
-                                    <img  src= '../public/spotify-logo.svg' width='25px' className='spotify-logo-down'/>
+                                    <img  src= '../spotify-logo.svg' width='25px' className='spotify-logo-down'/>
                                     Play on Spotify
                                 </button>
                             </Flex>

@@ -27,7 +27,7 @@ function DashboardContent() {
 
   return (
     <div>
-      <DashHeader setCurrentView={setCurrentView} />
+      <DashHeader setCurrentView={setCurrentView} currentView={currentView}/>
       {renderContent()}
     </div>
   );

@@ -249,7 +249,7 @@
  }
  .search-spotify-button .button-all{
     display:flex;
-    width: 300px;
+    width: 600px;
     height: 50px;
     justify-content: space-between;
  }
@@ -257,7 +257,7 @@
  .search-spotify-button .item-info {
     display: flex;
     flex-direction: column;
-    width:250px;
+    width:550px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -275,8 +275,10 @@
   .create-post-first{
     display:flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    
+    margin-left: 16%;
+    margin-right:16%;
+
   }
 
   .active{
@@ -403,6 +405,10 @@
     font-size:16px;
     padding-top: 8px;
 }
+.list-item-dash:hover{
+    opacity: .5;
+    cursor:pointer;
+}
 
 @media(max-width:1450px){
 .invisible{
@@ -429,3 +435,20 @@
     }
 }
 
+.dash-underline{
+    text-decoration: underline;
+}
+
+.create-post__top{
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+}
+
+.spotify-search{
+    height: 55px;
+    width: 600px;
+}
+.search-in-flex{
+    align-items: stretch;
+}
