@@ -38,7 +38,7 @@ function HomeContent() {
                 
             </div>
         </div>
-        <img src = {dj} id = "imageCanvas" className="otter-dj" />
+        <img src = {dj} className="otter-dj" />
     </div>
     )
 }

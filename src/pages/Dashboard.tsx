@@ -17,6 +17,7 @@ function DashboardContent() {
       case 'profile':
         return <Profile />;
       case 'createPost':
+        //return <CreatePostV2 />;
         return <CreatePost accessToken = {accessToken} />;
       case 'settings':
         return <Settings />;

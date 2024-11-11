@@ -195,11 +195,16 @@ export default function CreatePost({accessToken}:any) {
         <Message colorTheme='success'className={messageVisible ? 'message global-space' : 'hidden'}>Post Creation Success</Message>
         <div className={firstVisible ? 'create-post-first' : 'hidden'}>
             <div className='create-post__top global-extra-space'>
-                
+                <div className='track-logo-split'>
                 <div className='create-post__top__types'>
                     <button className={type === 'track' ? 'active create-type' : 'inactive create-type'} onClick={() => setType('track')}>Track</button>
                     <button className={type === 'album' ? 'active create-type' : 'inactive create-type'} onClick={() => setType('album')}>Album</button>
                     <button className={type === 'artist' ? 'active create-type' : 'inactive create-type'} onClick={() => setType('artist')}>Artist</button>
+                </div>
+                <div className='logo-create-posts'>
+                <img  src= '../spotify-full-logo.svg' width= '125px' className='spotify-logo-down'/>
+                </div>
+                  
                 </div>
             
             
