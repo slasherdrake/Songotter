@@ -230,19 +230,19 @@
  .amplify-input--error{
     border-color: rgb(204, 44, 44);
  }
-/* spotify search */
- .search-spotify-button{
+/* itunes search */
+ .search-itunes-button{
     height: 50px;
     width:100%;
     border-bottom: 1px solid white;
  }
- .search-spotify-button .button-all{
+ .search-itunes-button .button-all{
     display:flex;
     height: 50px;
     
  }
 
- .search-spotify-button .item-info {
+ .search-itunes-button .item-info {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -271,7 +271,7 @@
     
 }
 
-.spotify-search{
+.itunes-search{
     height: 55px;
     outline: none;
     border:none;
@@ -373,12 +373,12 @@
     color: white;
 }
 
-.spotify-logo-down{
+.itunes-logo-down{
     position:relative;
     top:6px;
     margin-right: 6px;
 }
-.play-on-spotify{
+.play-on-itunes{
    border:none;
    align-self:flex-end;
    margin-right: 5px;
@@ -462,3 +462,32 @@
     align-items: center;
     
 }
+
+.heart-pos:hover{
+    fill:  rgb(207, 55, 151);  
+}
+
+.comment-svg:hover{
+    fill: rgb(4, 125, 149);
+    
+}
+
+.border-none{
+    border:none;
+}
+
+.flex-grow-4{
+    flex-grow: 4;
+}
+
+.play-on-itunes:hover,.play-on-itunes:hover .itunes-logo-down{
+    color: rgb(207,55,151);
+    fill: rgb(207,55,151);
+}
+
+.pink-fill{
+    fill: rgb(207, 55, 151);
+}
+
+
+

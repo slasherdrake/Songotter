@@ -1,14 +1,15 @@
-import getSpotifyToken from '../hooks/GetSpotifyToken';
+//import getSpotifyToken from '../hooks/GetSpotifyToken';
 
 import DashHeader from "../components/DashHeader";
 import { useState } from 'react';
-import CreatePost from '../components/CreatePost';
+//import CreatePost from '../components/CreatePost';
+import CreatePostV2 from '../components/CreatePostV2';
 import Global from '../components/Global';
 import Profile from '../components/Profile';
 import Settings from '../components/Settings';
 function DashboardContent() {
   const [currentView, setCurrentView] = useState('global');
-  const accessToken = getSpotifyToken();
+  //const accessToken = getSpotifyToken();
 
   const renderContent = () => {
     switch(currentView) {
@@ -17,8 +18,8 @@ function DashboardContent() {
       case 'profile':
         return <Profile />;
       case 'createPost':
-        //return <CreatePostV2 />;
-        return <CreatePost accessToken = {accessToken} />;
+        return <CreatePostV2 />;
+        //return <CreatePost accessToken = {accessToken} />;
       case 'settings':
         return <Settings />;
       default:

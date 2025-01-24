@@ -27,6 +27,7 @@ const SpotifyUrlHandler = defineFunction({
 })
 
 
+
 const schema = a.schema({
   
   UserToken: a.model({
@@ -104,7 +105,7 @@ const schema = a.schema({
     ])
       .authorization(allow => [
         allow.owner().to(['create', 'read', 'update', 'delete']),
-        allow.authenticated().to(['read'])
+        allow.authenticated().to(['read']),
       ]),
 
     Comment: a.model({
@@ -128,19 +129,34 @@ const schema = a.schema({
     Like: a.model({
       id: a.id().required(),
       userId: a.string().required(),
-      postId: a.string(),
+      postId: a.string().required(),
       commentId: a.string(),
-
+    
+      
     }).identifier(['id'])// Keep primary key as 'id'
+    .secondaryIndexes((index) =>[
+      index('postId')
+    ])
       .authorization(allow => [
         allow.owner().to(['create', 'read', 'update', 'delete']),
         allow.authenticated().to(['read'])
       ]),
-    
-   
-
-    
-    
+    postLikeIncrement: a.mutation()
+    .arguments({ postId: a.id()})
+    .returns(a.ref('Post'))
+    .authorization(allow => [allow.authenticated()])
+    .handler(a.handler.custom({
+      dataSource: a.ref('Post'),
+      entry: './increment-like.js'
+    })),
+    postLikeDecrement: a.mutation()
+    .arguments({ postId: a.id()})
+    .returns(a.ref('Post'))
+    .authorization(allow => [allow.authenticated()])
+    .handler(a.handler.custom({
+      dataSource: a.ref('Post'),
+      entry: './decrement-like.js'
+    }))
 
 });
 

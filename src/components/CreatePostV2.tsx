@@ -47,6 +47,7 @@ export default function CreatePostV2() {
                     },
                 });
 
+                console.log(response.data.results);
                 setResult(response.data.results);
             } catch (error) {
                 console.error('Error searching iTunes:', error);
@@ -61,6 +62,8 @@ export default function CreatePostV2() {
     }, [query, type]);
 
     const handleClick = (id: string, image: string, title: string, artist: string, type: string, link: string) => {
+        image = image.replace(/(\d+x\d+bb\.jpg)$/, '640x640bb.jpg');
+        console.log(image);
         setPreviewData({
             id,
             image,
@@ -69,6 +72,7 @@ export default function CreatePostV2() {
             type,
             link,
         });
+        console.log(previewData);
         setFirstVisible(false);
         setMessageVisible(false);
     };
@@ -99,7 +103,7 @@ export default function CreatePostV2() {
         try {
             const post = {
                 type: previewData.type,
-                itunesId: previewData.id,
+                spotifyId: previewData.id,
                 image: previewData.image,
                 title: previewData.title,
                 artist: previewData.artist,
@@ -108,9 +112,9 @@ export default function CreatePostV2() {
                 link: previewData.link,
                 userId: userId,
                 displayName: displayName,
-                likes: 0,
                 createdAt: createdAt,
                 order: order,
+                likes: 0,
                 stringPost: 'post',
             };
             console.log('Post data:', post);
@@ -134,7 +138,7 @@ export default function CreatePostV2() {
                         <div className='create-post__top__types'>
                             <button className={type === 'track' ? 'active create-type' : 'inactive create-type'} onClick={() => setType('track')}>Track</button>
                             <button className={type === 'album' ? 'active create-type' : 'inactive create-type'} onClick={() => setType('album')}>Album</button>
-                            <button className={type === 'artist' ? 'active create-type' : 'inactive create-type'} onClick={() => setType('artist')}>Artist</button>
+                            {/*<button className={type === 'artist' ? 'active create-type' : 'inactive create-type'} onClick={() => setType('artist')}>Artist</button> */}
                         </div>
                     </div>
                     <div className='search-in-flex'>
@@ -194,8 +198,8 @@ export default function CreatePostV2() {
                                     <p>Review by {displayName}</p>
                                 </Flex>
                                 <button onClick={handleLink} className='play-on-itunes'>
-                                    <img src='../itunes-logo.svg' width='25px' className='itunes-logo-down' />
-                                    Play on iTunes
+                                    <img src='../icons8-apple.svg' width='25px' className='itunes-logo-down' />
+                                    Music
                                 </button>
                             </Flex>
                             <Flex direction="row" alignItems='baseline'>

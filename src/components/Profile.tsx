@@ -46,9 +46,10 @@ export default function Profile() {
                                     <p>Review by {post.displayName}</p>
                             
                                 </Flex>
-                                <button onClick={() => window.open(post.link, '_blank')} className='play-on-spotify'>
-                                    <img  src= '../spotify-logo.svg' width='25px' className='spotify-logo-down'/>
-                                    Play on Spotify
+                                <button onClick={() => window.open(post.link, '_blank')} className='play-on-itunes'>
+                                  
+                                    <img  src= '../icons8-apple.svg' width='25px' className='itunes-logo-down'/>
+                                    Music
                                 </button>
                             </Flex>
                             <Flex direction="row" alignItems = 'baseline'>

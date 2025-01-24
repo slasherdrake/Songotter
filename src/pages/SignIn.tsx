@@ -3,12 +3,13 @@ import AuthenticatorCustomFormFields from '../components/AuthenticatorCustomForm
 import '@aws-amplify/ui-react/styles.css';
 import '../styles/global.css';
 import AccountRedirect from '../components/AccountRedirect';
+
 export default function SignIn() {
     return (
       <div className= 'sign-up'>
-      <Authenticator formFields={AuthenticatorCustomFormFields} className="cent" >
-          <AccountRedirect />
+        <Authenticator formFields={AuthenticatorCustomFormFields} className="cent" >
+            <AccountRedirect />
         </Authenticator>
-        </div>
+      </div>
     );
   }
