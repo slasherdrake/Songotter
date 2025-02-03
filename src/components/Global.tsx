@@ -105,12 +105,7 @@ export default function Global() {
                             </Flex>
                             <Text className= 'text-white flex-grow-4'>{post.comment}</Text>
                             <Flex>
-                            <Likes id={post.id} likes={post.likes} likeId={post.likeId} onLikeUpdate={handleLikeUpdate}/>
-            
-                            <p>5</p>
-                            <button className='border-none'>
-                            <CommentSVG />
-                            </button>
+                            <Likes id={post.id} likes={post.likes} likeId={post.likeId} onLikeUpdate={handleLikeUpdate}/>              
                             </Flex>
                             
                         </Flex>
